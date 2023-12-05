@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
+    <script src="script.js"></script>
+    <title>Studio Ghibli - Movies</title>
+</head>
+<body>
+    <div id="nav-banner">
+        <img id="logo" src="https://static.wikia.nocookie.net/universalanimation/images/2/2f/Studio_Ghibli_logo.svg.png" alt="logo"/>
+        <div id="nav-buttons-container">
+            <a class="nav-button">Home</a>
+            <a class="nav-button" id="movies-button" href="">Movies</a>
+            <a class="nav-button">Studio Members</a>
+            <a class="nav-button">Studio History</a>
+            <a class="nav-button">Contact</a>
+        </div>
+    </div>
+    <div id="intro-text">Discover all animation movies from Studio Ghibli</div>
+    <form id="search-bar">
+        <input id="search-input" type="text" oninput="search()" placeholder="Search for a title, director, producer...">
+        <button id="search-button" type="submit"><i class="gg-search"></i></button>
+    </form>
+    <label for="sort-by">Sort by</label>
+    <select name="sort-value" id="sort-by" onchange="sortChange(value)">
+        <option value="release_date">Release</option>
+        <option value="title">Title</option>
+        <option value="director">Director</option>
+        <option value="producer">Producer</option>
+        <option value="running_time">Running time</option>
+        <option value="rt_score">RT Score</option>
+    </select>
+    <div id="no-result">No result</div>
+    <div id="movie-list-container"></div>
+</body>
+</html>
