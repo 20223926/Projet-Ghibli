@@ -161,7 +161,7 @@ label[for="sort-by"] {
 }
 
 .more-info {
-    line-height: 1.3em;
+    line-height: 1.1em;
     margin-top: 2.5em;
     margin-left: 1em;
     margin-right: 1em;
@@ -172,7 +172,7 @@ label[for="sort-by"] {
     max-height: 10em;
     overflow-y: scroll;
     line-height: normal;
-    margin-bottom: 1em;
+    margin-bottom: 0.7em;
     padding-right: 0.4em;
     scrollbar-width: thin;
     scrollbar-color: rgb(110, 110, 110) transparent;
