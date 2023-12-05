@@ -19,7 +19,7 @@ const insertMovie = movie => {
                             </div>
                             <div class="more-info">
                                 <div class="description">${movie.description}</div>
-                                <div class="original-title"><strong>Original title:</strong> ${movie.original_title} (${movie.original_title_romanised})</div>
+                                <div class="original-title"><strong>Original title:</strong> ${movie.original_title}</div>
                                 <div class="director-ext"><strong>Director:</strong> ${movie.director}</div>
                                 <div class="producer"><strong>Producer:</strong> ${movie.producer}</div>
                                 <div class="release-date"><strong>Release:</strong> ${movie.release_date}</div>
