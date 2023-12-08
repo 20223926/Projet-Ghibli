@@ -7,26 +7,34 @@ const init = async () => {
     updateMovieList();
 }
 
-const insertMovie = movie => {
-    const movieListContainer = document.getElementById("movie-list-container");
-    const newMovie = document.createElement("div");
-    newMovie.classList.add("movie-container");
-    newMovie.innerHTML = `  <img class="movie-banner" src="${movie.image}"/>
-                            <div class="main-info">
-                                <div class="title">${movie.title}</div>
-                                <div class="director">${movie.director}</div>
-                                <div class="running-time">${movie.running_time}min</div>
-                            </div>
-                            <div class="more-info">
-                                <div class="description">${movie.description}</div>
-                                <div class="original-title"><strong>Original title:</strong> ${movie.original_title}</div>
-                                <div class="director-ext"><strong>Director:</strong> ${movie.director}</div>
-                                <div class="producer"><strong>Producer:</strong> ${movie.producer}</div>
-                                <div class="release-date"><strong>Release:</strong> ${movie.release_date}</div>
-                                <div class="rt-score"><strong>RT Score:</strong> 🍅${movie.rt_score}%</div>
-                            </div>`
-    movieListContainer.insertAdjacentElement("beforeend", newMovie);
-    setTimeout(() => newMovie.classList.add("loaded"), 120)
+class MovieTemplate {
+    movieList(list) {
+        return list.reduce((acc, movie, index) => {
+            const movieHTML = ` <div class="movie-container">
+                                    <img class="movie-banner" src="${movie.image}"/>
+                                    <div class="main-info">
+                                        <div class="title">${movie.title}</div>
+                                        <div class="director">${movie.director}</div>
+                                        <div class="running-time">${movie.running_time}min</div>
+                                    </div>
+                                    <div class="more-info">
+                                        <div class="description">${movie.description}</div>
+                                        <div class="original-title"><strong>Original title:</strong> ${movie.original_title}</div>
+                                        <div class="director-ext"><strong>Director:</strong> ${movie.director}</div>
+                                        <div class="producer"><strong>Producer:</strong> ${movie.producer}</div>
+                                        <div class="release-date"><strong>Release:</strong> ${movie.release_date}</div>
+                                        <div class="rt-score"><strong>RT Score:</strong> 🍅${movie.rt_score}%</div>
+                                    </div>
+                                </div>`
+
+            setTimeout(() => {
+                const movieContainer = document.getElementsByClassName("movie-container")[index];
+                movieContainer.classList.add("loaded");
+            }, 100 * (index+1));
+
+            return acc + movieHTML;
+        }, "");
+    }
 }
 
 const updateMovieList = () => {
@@ -35,9 +43,8 @@ const updateMovieList = () => {
     movieListContainer.innerHTML = "";
     if (currentMovieList.length !== 0) {
         noResultText.style.display = "none";
-        for (movie of currentMovieList) {
-            insertMovie(movie);
-        }
+        const movie = new MovieTemplate();
+        movieListContainer.insertAdjacentHTML("beforeend", movie.movieList(currentMovieList));
     }
     else {
         noResultText.style.display = "block";
